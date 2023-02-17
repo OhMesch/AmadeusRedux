@@ -22,6 +22,8 @@ subtitle_url = cre.subtitleSource()
 
 
 
+# pychromecast probably uses "application/x-mpegURL"
+
 # !TOCO doesnt work on windows
 # PS C:\programming\AmadeusRedux> mpv ..\autogen_youtube\temp\acvtxebd.mp4 --o=- --of=hls | castnow --address 192.168.86.27 -
 print_cyan(f"mpv '{video_url}' --sub-file='{subtitle_url}' --o=- --of=hls | castnow --address 192.168.86.27 - --tomp4")
