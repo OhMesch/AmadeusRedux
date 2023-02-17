@@ -4,7 +4,7 @@ import creds
 class CrunchyRollExtractor:
     def __init__(self, url):
         ydl_opts = {"username": creds.CRUNCHY_USER,
-                    "password": creds.CRUNCH_PASS,
+                    "password": creds.CRUNCHY_PASS,
                     "simulate": 1,
                     "cachedir": False,
                     "cookiesfrombrowser": ("firefox",)}
