@@ -1,8 +1,8 @@
-import subprocess
-import os
+import time
 
 from Extractors import CrunchyRollExtractor
-from subprocess import Popen, PIPE, STDOUT
+
+from helpers import *
 
 cre = CrunchyRollExtractor('https://www.crunchyroll.com/watch/GK9U313E5/dream')
 video_url = cre.videoSource()
@@ -19,7 +19,40 @@ subtitle_url = cre.subtitleSource()
 # mpv = subprocess.run(['/usr/bin/mpv', f"'{video_url}'", f"--sub-file='{subtitle_url}'", '--o=-', '--of=hls'], stdout=subprocess.PIPE)
 # print(" ".join(mpv.args))
 # castnow = subprocess.run(['castnow', '--address', '192.168.86.27', '-', '--tomp4'], stdin=subprocess.PIPE)
+
+
+
+# !TOCO doesnt work on windows
+# PS C:\programming\AmadeusRedux> mpv ..\autogen_youtube\temp\acvtxebd.mp4 --o=- --of=hls | castnow --address 192.168.86.27 -
+print_cyan(f"mpv '{video_url}' --sub-file='{subtitle_url}' --o=- --of=hls | castnow --address 192.168.86.27 - --tomp4")
+
 print()
-os.system(f"mpv '{video_url}' --sub-file='{subtitle_url}' --o=- --of=hls | castnow --address 192.168.86.27 - --tomp4")
+process = run_command_async([
+    'mpv', 
+    video_url, 
+    f'--sub-file={subtitle_url}',
+    '--o=-', 
+    '--of=hls',
+], debug=True)
+
+castnow_binary_name = 'castnow'
+if is_windows():
+    castnow_binary_name = 'castnow.cmd'
+
+print('starting async')
+process = run_command_async([
+    castnow_binary_name, 
+    '--address', 
+    '192.168.86.27',
+    '-', 
+    '--tomp4',
+], stdin=process.stdout, debug=True)
+
+time.sleep(2700)
+# import subprocess
+# import os
+# from subprocess import Popen, PIPE, STDOUT
+# os.system(f"mpv '{video_url}' --sub-file='{subtitle_url}' --o=- --of=hls | castnow --address 192.168.86.27 - --tomp4")
 # print(" ".join(castnow.args))
-print("complete")
+
+print_green("complete")
