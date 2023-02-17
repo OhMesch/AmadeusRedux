@@ -2,3 +2,4 @@ catt
 PyChromecast
 selenium
 selenium-stealth
+yt-dlp

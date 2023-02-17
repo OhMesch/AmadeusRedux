@@ -9,9 +9,6 @@ class CrunchyRollExtractor:
                     "cachedir": False,
                     "cookiesfrombrowser": ("firefox",)}
 
-        ydl_opts = {"username": creds.CRUNCHY_USER,
-                    "password": creds.CRUNCH_PASS,}
-
         with YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url)
 
