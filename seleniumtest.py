@@ -33,7 +33,7 @@ options.add_experimental_option('prefs', prefs)
 
 
 # options.add_argument('headless')
-caps = caps = DesiredCapabilities.CHROME
+caps = DesiredCapabilities.CHROME
 caps['goog:loggingPrefs'] = {'performance': 'ALL'}
 driver = webdriver.Chrome(service=driver_s, options=options, desired_capabilities=caps)
 stealth(driver,
