@@ -11,6 +11,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 class AnimeOwlExtractor:
     def __init__(self, url):
         driver_s = Service("/home/mesch/prog/SeleniumDrivers/chromedriver")
+        driver_s = Service("/home/mesch/programming/SeleniumDrivers/chromedriver")
         options = webdriver.ChromeOptions()
         options.add_argument("start-maximized")
 
@@ -24,6 +25,8 @@ class AnimeOwlExtractor:
             fix_hairline=True,
         )
         driver.get(url)
+
+        video_element = driver.find_element(By.XPATH, "//video[@contains(@src, 'monkey-d-luffy.site')]")
 
         
 

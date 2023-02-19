@@ -1,4 +1,4 @@
 from Extractors import AnimeOwlExtractor as aoe
 
 aoe = aoe.AnimeOwlExtractor("https://portablegaming.co/watch/blue-lock/1.00")
-ideo = aoe.videoSource()
+video = aoe.videoSource()
