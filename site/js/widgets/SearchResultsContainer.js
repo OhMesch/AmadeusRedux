@@ -33,8 +33,7 @@ class SearchResultsContainer extends HTMLElement {
   
     render() {
         const template = 
-        `<p>Data is In</p>
-        <div class="SearchResultContainer">
+        `<div class="SearchResultContainer">
             ${this.renderPreviews()}
         </div>`
         
@@ -46,7 +45,7 @@ class SearchResultsContainer extends HTMLElement {
         this.search_results.forEach(media => {
             previewTemplate += `<search-result-preview title=\"${media.title.native}\"
                                                        description=\"${media.description}\"
-                                                       art=\"${media.coverImage.medium}\">
+                                                       art=\"${media.coverImage.extraLarge}\">
                                 </search-result-preview>\n`;
         });
         return previewTemplate;
@@ -65,7 +64,7 @@ class SearchResultsContainer extends HTMLElement {
                     genres
                     status
                     coverImage {
-                        medium
+                        extraLarge
                     }
                 }
             }

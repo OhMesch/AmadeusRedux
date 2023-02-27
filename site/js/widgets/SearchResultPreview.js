@@ -1,8 +1,10 @@
 class SearchResultPreview extends HTMLElement {
-    // styleSheet = '../../css/DashboardEntry.css';
+    styleSheet = '../../css/SearchResultPreview.css';
 
     constructor() {
         super();
+
+        this.attachShadow({mode: 'open'});
     }
     
     static get observedAttributes() {
@@ -26,17 +28,19 @@ class SearchResultPreview extends HTMLElement {
             this.render();
         }
     }
-  
+
     render() {
         const template = 
-        // `<style> @import "${this.styleSheet}"; </style>
-        `<div class="SearchResultPreview" onclick="location.href='TODO'">
+        `<style> @import "${this.styleSheet}"; </style>
+        <div class="SearchResultPreview" onclick="location.href='TODO'">
             <h1>${this.title}</h1>
-            <p>${this.description}</p>
-            <img src='${this.art}'>
+            <div class="row-align">
+                <img src='${this.art}'>
+                <p>${this.description}</p>
+            </div>
         </div>`
         
-        this.innerHTML = template;          
+        this.shadowRoot.innerHTML = template;          
     }
 }
       
